@@ -100,9 +100,7 @@ Non-restoring division 방식은 ( rem - div ) X 2 + div 이다.
 
 #### Flowchart
 
-
-
-![Division-(3)](C:\Users\kanch\Desktop\TIL\Images\Division-(3).JPG) 
+![Division-(3)](../Images/Division-(3).JPG) 
 
 
 
