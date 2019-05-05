@@ -35,6 +35,10 @@ int String::Find(String pat) {
 
 ##### Fast Find + Failure Function
 
+Fast Find : O(LengthS)
+
+Failure Function : O(LengthP)
+
 ```c++
 int String::FastFind(String pat) {
     int posP = 0, int posS = 0;
@@ -80,7 +84,7 @@ void String::FailureFunction() {
 }
 ```
 
-시간 복잡도 : O(LengthS * LengthP)
+시간 복잡도 : O(LengthS + LengthP)
 
 
 
