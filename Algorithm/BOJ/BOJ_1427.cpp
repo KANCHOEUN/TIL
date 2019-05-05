@@ -1,8 +1,6 @@
 #include <iostream>
-#include <String>
+#include <string>
 using namespace std;
-
-// 컴파일 에러??
 
 void Swap(int &a, int &b)
 {
