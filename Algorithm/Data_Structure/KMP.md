@@ -1,4 +1,4 @@
-# 자료 구조 (2)
+# KMP Algorithm
 
 
 
@@ -33,28 +33,58 @@ int String::Find(String pat) {
 
 #### (2) KMP Algorithm : Failure Function
 
-##### Failure Function
-
-(나중에 추가 예정)
-
-
+##### Fast Find + Failure Function
 
 ```c++
-int String::FailureFunction() {
+int String::FastFind(String pat) {
+    int posP = 0, int posS = 0;
+    int lengthP = pat.Length();
+    int lengthS = Length();
+    
+    while((posP < lengthP) && (posS < lengthS)) {
+        if(pat.str[posP] == str[posS]) {
+            posP++;
+            posS++;
+        }
+        else {
+            if(posP == 0) {
+                posS++;
+            }
+            else {
+                posP = pat.f[posP - 1] + 1;
+            }
+        }
+    }
+    if(posP < lengthP) {
+        return -1;
+    }
+    else P
+        return posS - lengthP;
+}
+
+void String::FailureFunction() {
     int lengthP = Length();
     f[0] = -1;
     for(int j = 1; j < lengthP; j++) {
         int i = f[j - 1];
-        while((*(str + j) != *(str + i + 1)) && (i >= 0)) {
+        while((*(str + j) != *(str+i+1)) && (i >= 0)) {
             i = f[i];
         }
         if(*(str + j) == *(str + i + 1)) {
             f[j] = i + 1;
-        } else {
+        }
+        else {
             f[j] = -1;
         }
     }
 }
 ```
 
-시간 복잡도 : O(LengthP)
+시간 복잡도 : O(LengthS * LengthP)
+
+
+
+| s    | a    | b    | a    | a    | b    | a    | a    | b    | c    | a    |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| f    | -1   | -1   | 0    | 0    | 1    | 2    | 3    | 4    | -1   | 0    |
+
