@@ -1,36 +1,42 @@
 #include <iostream>
+#define MAX 246912
 using namespace std;
 
-// 시간 초과
+/* 에라토스테네스의 체 활용 */
 
-int main() {
-  int n;
-  int count;
+int main()
+{
+  bool * isPrime = new bool[MAX + 1];
+
+  isPrime[1] = false; // 1은 소수 X
+
+  for(int i = 2; i <= MAX; i++) {
+    isPrime[i] = true;
+  }
+
+  for(int i = 2; i * i <= MAX; i++) {
+    if(isPrime[i]) {
+      for(int j = i * 2; j <= MAX; j += i) {
+        isPrime[j] = false;
+      }
+    }
+  }
 
   while(1) {
-    count = 0;
-    cin >> n;
-    if(n == 0){
+    int N;
+    int count = 0;
+    cin >> N;
+
+    if(N == 0) {
       break;
     }
 
-    for(int i = n + 1; i <= 2*n; i++) {
-      int flag = 0;
-
-      if(n + 1 <= 1) {
-        continue;
-      }
-      for(int j = i - 1; j > 1; j--) {
-        if((i % j) == 0) {
-          flag = 1;
-          break;
-        }
-      }
-
-      if(flag == 0) {
+    for(int i = N + 1; i <= 2 * N; i++) {
+      if(isPrime[i]) {
         count++;
       }
     }
+
     cout << count << endl;
   }
 
