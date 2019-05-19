@@ -90,7 +90,7 @@ RRE 행렬로부터 연립 일차 방정식을 관찰해서
 
 
 
-![Matrix2-(1)](C:\Users\kanch\Documents\TIL\Images\Matrix2-(1).JPG) 
+![Matrix2-(1)](../../Images/Matrix2-(1).JPG) 
 
 
 
