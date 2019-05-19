@@ -8,7 +8,7 @@
 
 ##### Stack\<T>
 
-: deque\<T> 컨테이너를 후입선출 ( Last In First Out ) 으로 저장하는 방식으로 변환하는 **어댑터 클래스 템플릿**
+: deque\<T> 컨테이너를 **후입선출 ( Last In First Out )** 로 저장하는 방식으로 변환하는 **어댑터 클래스 템플릿**
 
 : stack 헤더에 정의되어 있음
 
@@ -96,6 +96,55 @@ int main() {
 		}
 		else {
 			cout << "Not available" << endl;
+		}
+	}
+
+	return 0;
+}
+
+```
+
+
+
+##### 백준 9012번
+
+```c++
+#include <iostream>
+#include <string>
+#include <stack>
+using namespace std;
+
+int main() {
+	int N;
+	cin >> N;
+
+	for (int i = 0; i < N; i++) {
+		stack<char> s;
+		bool flag = true;
+		string str;
+		cin >> str;
+
+		for (int j = 0; j < (int) str.length(); j++) {
+			if (str.at(j) == '(') {
+				s.push('(');
+			}
+			else {
+				if (s.empty()) {
+					flag = false;
+				}
+				else {
+					s.pop();
+				}
+			}
+		}
+		if (!s.empty()) {
+			flag = false;
+		}
+		if (flag) {
+			cout << "YES" << endl;
+		}
+		else {
+			cout << "NO" << endl;
 		}
 	}
 
