@@ -4,18 +4,12 @@
 #define MAX 10000
 using namespace std;
 
-// ERROR 미완성
-
 class Stack {
 private:
 	int s[MAX];
-	int top;
+	int top = -1;
 
 public:
-	Stack() {
-		top = -1;
-	}
-
 	int Size() const {
 		return top + 1;
 	}
@@ -30,7 +24,12 @@ public:
 	}
 
 	int Top() const {
-		return s[top];
+		if (IsEmpty()) {
+			return -1;
+		}
+		else {
+			return s[top];
+		}
 	}
 
 	void Push(int x) {
@@ -38,11 +37,11 @@ public:
 			cout << "Stack Overflow" << endl;
 			return;
 		}
-		s[top++] = x;
+		s[++top] = x;
 	}
 
 	void Pop() {
-		if (IsEmpty() == true) {
+		if (IsEmpty()) {
 			cout << "-1" << endl;
 		}
 		else {
